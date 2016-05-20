@@ -1,0 +1,200 @@
+{
+	"MeiliVariables":
+	{
+		"BackgroundSound":{"varType":"SOUND", "loop": true, "fileURI":"ZeldaHyrulianReMix.mp3", "comment":""},
+		"CeilingColor": {"varType":"COLOR", "r":255, "g": 255, "b": 255, "comment":""},
+		"FloorColor": {"varType":"COLOR", "r":0, "g": 0, "b": 0, "comment":""},
+		"Height": {"varType":"NUMBER", "startingValue":0, "minValue":0, "maxValue":100, "comment":""},
+		"Strength": {"varType":"NUMBER", "startingValue":25, "minValue":25, "maxValue":100, "comment":""},
+		"TapFlashColor": {"varType":"COLOR", "r":255, "g": 255, "b": 0, "comment":""},
+		"DoubleTapFlashColor": {"varType":"COLOR", "r":0, "g": 255, "b": 0, "comment":""},
+		"DoubleTapRestColor": {"varType":"COLOR", "r":255, "g": 0, "b": 255, "comment":""},
+		"HeightColor":
+		{
+			"varType":"COLORRANGE",
+			"minColorVar": "FloorColor",
+			"maxColorVar": "CeilingColor",
+			"numberVar": "Height",
+			"comment":""
+		}
+	},
+	"MeiliEvents":
+	{
+		"Event0":
+		{
+			"eventTrigger":{"triggerType":"ONAREAENTER"},
+			"comment":"",
+			"maxTriggerCount":-1,
+			"secondsBeforeRetriggering":0,
+			"conditions":[],
+			"actionsUponSuccess":
+			[
+				{"actionType":"PLAYAUDIO", "audioVariable":"BackgroundSound"},
+				{"actionType":"LINKSOUNDVOLUMETONUMBER", "audioVariable":"BackgroundSound", "numberVariable":"Height", "volumeAtMin0to1":0, "volumeAtMax0to1":1},
+				{"actionType":"LINKBACKGROUNDTOCOLOR", "colorVar":"HeightColor", "blendDuration":3 },
+				{"actionType":"SHOWMESSAGE", "message":"Gestures Test"}
+			],
+			"actionsUponFailure":[]
+		},
+		"IntervalEvent":
+		{
+			"eventTrigger":{"triggerType":"ONINTERVAL"},
+			"comment":"",
+			"secondsBeforeRetriggering":0.1,
+			"conditions":
+			[
+			],
+			"actionsUponSuccess":
+			[
+				{"actionType":"CHANGEBYVALUE", "resultVar":"Height", "leftVar":"Height", "changeOperator":"-", "rightVal":2, "randomDeviation":0}
+			],
+			"actionsUponFailure":
+			[
+			]
+		},
+		"UpEvent":
+        {
+            "eventTrigger": {"triggerType":"ONGESTURE", "acceptedGestures": ["UP"]},
+            "comment": "",
+            "secondsBeforeRetriggering": 0,
+            "conditions":[],
+            "actionsUponSuccess":
+			[
+				{"actionType":"SHOWMESSAGE", "message":"Up lifts background by strength"},
+				{"actionType":"CHANGEBYVAR", "resultVar":"Height", "leftVar":"Height", "changeOperator":"+", "rightVar":"Strength", "randomDeviation":0}
+            ],
+            "actionsUponFailure": []
+        },
+		"DownEvent":
+        {
+            "eventTrigger": {"triggerType":"ONGESTURE", "acceptedGestures": ["DOWN"]},
+            "comment": "",
+            "secondsBeforeRetriggering": 0,
+            "conditions":[],
+            "actionsUponSuccess":
+			[
+				{"actionType":"SHOWMESSAGE", "message":"Down drops background by strength"},
+				{"actionType":"CHANGEBYVAR", "leftVar":"Height", "changeOperator":"-", "rightVar":"Strength", "randomDeviation":0}
+            ],
+            "actionsUponFailure": []
+        },
+		"LeftEvent":
+        {
+            "eventTrigger": {"triggerType":"ONGESTURE", "acceptedGestures": ["LEFT"]},
+            "comment": "",
+            "secondsBeforeRetriggering": 0,
+            "conditions":[],
+            "actionsUponSuccess":
+			[
+				{"actionType":"CHANGEBYVALUE", "resultVar":"Strength", "leftVar":"Strength", "changeOperator":"-", "rightVal":25, "randomDeviation":0},
+				{"actionType":"SHOWVAR", "varName":"Strength", "prefix":"Left swipe decreased Strength to ", "suffix":""}
+            ],
+            "actionsUponFailure": []
+        },
+		"RightEvent":
+        {
+            "eventTrigger": {"triggerType":"ONGESTURE", "acceptedGestures": ["RIGHT"]},
+            "comment": "",
+            "secondsBeforeRetriggering": 0,
+            "conditions":[],
+            "actionsUponSuccess":
+			[
+				{"actionType":"CHANGEBYVALUE", "resultVar":"Strength", "leftVar":"Strength", "changeOperator":"+", "rightVal":25, "randomDeviation":0},
+				{"actionType":"SHOWVAR", "varName":"Strength", "prefix":"Right swipe increased Strength to ", "suffix":""}
+            ],
+            "actionsUponFailure": []
+        },
+		"TapEvent":
+        {
+            "eventTrigger": {"triggerType":"ONGESTURE", "acceptedGestures": ["TAP"]},
+            "comment": "",
+            "secondsBeforeRetriggering": 0,
+            "conditions":[],
+            "actionsUponSuccess":
+			[
+				{"actionType":"SHOWMESSAGE", "message":"Tap single flash on background"},
+				{
+					"actionType":"FLASHCOLORS",
+					"flashColorVar":"TapFlashColor",
+					"attackDuration":1.0,
+					"sustainDuration":0.0,
+					"releaseDuration":1.0,
+					"restDuration":0.0,
+					"numberOfFlashes":1
+				}
+            ],
+            "actionsUponFailure": []
+        },
+		"DoubleTapEvent":
+        {
+            "eventTrigger": {"triggerType":"ONGESTURE", "acceptedGestures": ["DOUBLETAP"]},
+            "comment": "",
+            "secondsBeforeRetriggering": 0,
+            "conditions":[],
+            "actionsUponSuccess":
+			[
+				{"actionType":"SHOWMESSAGE", "message":"DoubleTap 5 flashes ignore background"},
+				{
+					"actionType":"FLASHCOLORS",
+					"flashColorVar":"DoubleTapFlashColor",
+					"restColorVar":"DoubleTapRestColor",
+					"attackDuration":0.25,
+					"sustainDuration":0.25,
+					"releaseDuration":0.25,
+					"restDuration":0.25,
+					"numberOfFlashes":5
+				}
+            ],
+            "actionsUponFailure": []
+        },
+		"HoldEvent":
+        {
+            "eventTrigger": {"triggerType":"ONGESTURE", "acceptedGestures": ["HOLD"]},
+            "comment": "",
+            "secondsBeforeRetriggering": 0,
+            "conditions":[],
+            "actionsUponSuccess":
+			[
+				{"actionType":"SHOWMESSAGE", "message":"Hold 2.5 second Vibration"},
+				{"actionType":"VIBRATE", "seconds":2.5}
+            ],
+            "actionsUponFailure": []
+        },
+		"RotateEvent":
+        {
+            "eventTrigger": {"triggerType":"ONGESTURE", "acceptedGestures": ["ROTATE"]},
+            "comment": "",
+            "secondsBeforeRetriggering": 0,
+            "conditions":[],
+            "actionsUponSuccess":
+			[
+				{"actionType":"SHOWMESSAGE", "message":"Rotate"}
+            ],
+            "actionsUponFailure": []
+        },
+		"PinchInEvent":
+        {
+            "eventTrigger": {"triggerType":"ONGESTURE", "acceptedGestures": ["PINCHIN"]},
+            "comment": "",
+            "secondsBeforeRetriggering": 0,
+            "conditions":[],
+            "actionsUponSuccess":
+			[
+				{"actionType":"SHOWMESSAGE", "message":"Pinch In"}
+            ],
+            "actionsUponFailure": []
+        },
+		"PinchOutEvent":
+        {
+            "eventTrigger": {"triggerType":"ONGESTURE", "acceptedGestures": ["PINCHOUT"]},
+            "comment": "",
+            "secondsBeforeRetriggering": 0,
+            "conditions":[],
+            "actionsUponSuccess":
+			[
+				{"actionType":"SHOWMESSAGE", "message":"Pinch Out"}
+            ],
+            "actionsUponFailure": []
+        }
+	}
+}

@@ -1,0 +1,16 @@
+{
+	"GameIconURL":"./img/cub.gif",
+	"GameTitle":"Test Harness",
+	"GameDescription":"In Soviet Russia,<br/>HARNESS TEST YOU!",
+	"GlobalAreaFile":"AreaTestGlobal.json",
+	"AudioChannelDefinitions":
+	{
+		"Music":
+		{
+			"channelVolume0to1":0.025
+		},
+		"Voice":
+		{
+		}
+	}
+}

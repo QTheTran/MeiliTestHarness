@@ -1,0 +1,188 @@
+{
+	"MeiliVariables":
+	{
+		"AmbientSound":{"varType":"SOUND", "audioChannel":"Music", "loop": true, "fileURI":"MashupMuseUprising.mp3", "comment":""},
+		"TestUI": {"varType":"STRING", "startingValue":"Test UI", "comment":""},
+		"TestGestures": {"varType":"STRING", "startingValue":"Test Gestures (and Background Colors)", "comment":""},
+		"TestShake": {"varType":"STRING", "startingValue":"Test Shake Detection", "comment":""},
+		"TestStep": {"varType":"STRING", "startingValue":"Test Step Detection", "comment":""},
+		"TestGPS": {"varType":"STRING", "startingValue":"Test GPS Functionality", "comment":""},
+		"TestAudio": {"varType":"STRING", "startingValue":"Test Audio Functionality", "comment":""},
+		"TestLED": {"varType":"STRING", "startingValue":"Test Camera LED", "comment":""},
+		"TestFlow": {"varType":"STRING", "startingValue":"Control the Flow of Time", "comment":""}
+	},
+	"MeiliEvents":
+	{
+		"AreaEnterEvent":
+		{
+			"eventTrigger":{"triggerType":"ONAREAENTER"},
+			"comment":"",
+			"maxTriggerCount":-1,
+			"secondsBeforeRetriggering":0,
+			"conditions":
+			[
+			],
+			"actionsUponSuccess":
+			[
+				{"actionType":"SHOWMESSAGE", "message":"Choose Your Test!"},
+				{"actionType":"ADDBUTTON", "stringVar":"TestUI"},
+				{"actionType":"ADDBUTTON", "stringVar":"TestGestures"},
+				{"actionType":"ADDBUTTON", "stringVar":"TestShake"},
+				{"actionType":"ADDBUTTON", "stringVar":"TestStep"},
+				{"actionType":"ADDBUTTON", "stringVar":"TestGPS"},
+				{"actionType":"ADDBUTTON", "stringVar":"TestAudio"},
+				{"actionType":"ADDBUTTON", "stringVar":"TestLED"},
+				{"actionType":"ADDBUTTON", "stringVar":"TestFlow"},
+				{"actionType":"PLAYAUDIO", "audioVariable":"AmbientSound"}
+			],
+			"actionsUponFailure":
+			[
+			]
+		},
+		"AreaExitEvent":
+		{
+			"eventTrigger":{"triggerType":"ONAREAEXIT"},
+			"comment":"EventHubAreaExited exists within AreaTestGlobal.json",
+			"maxTriggerCount":-1,
+			"secondsBeforeRetriggering":0,
+			"conditions":
+			[
+			],
+			"actionsUponSuccess":
+			[
+				{"actionType":"TRIGGEREVENT", "listenerName":"EventHubAreaExited"}
+			],
+			"actionsUponFailure":
+			[
+			]
+		},
+		"EventChoseUI":
+		{
+			"eventTrigger":{"triggerType":"ONBUTTONCHOICE", "stringVar":"TestUI" },
+			"comment":"",
+			"secondsBeforeRetriggering":0,
+			"conditions":
+			[
+			],
+			"actionsUponSuccess":
+			[
+				{"actionType":"CHANGEAREA", "areaFileName":"AreaTestUI.json"}
+			],
+			"actionsUponFailure":
+			[
+			]
+		},
+		"EventChoseGestures":
+		{
+			"eventTrigger":{"triggerType":"ONBUTTONCHOICE", "stringVar":"TestGestures" },
+			"comment":"",
+			"secondsBeforeRetriggering":0,
+			"conditions":
+			[
+			],
+			"actionsUponSuccess":
+			[
+				{"actionType":"CHANGEAREA", "areaFileName":"AreaTestGestures.json"}
+			],
+			"actionsUponFailure":
+			[
+			]
+		},
+		"EventChoseShake":
+		{
+			"eventTrigger":{"triggerType":"ONBUTTONCHOICE", "stringVar":"TestShake" },
+			"comment":"",
+			"secondsBeforeRetriggering":0,
+			"conditions":
+			[
+			],
+			"actionsUponSuccess":
+			[
+				{"actionType":"CHANGEAREA", "areaFileName":"AreaTestShake.json"}
+			],
+			"actionsUponFailure":
+			[
+			]
+		},
+		"EventChoseStep":
+		{
+			"eventTrigger":{"triggerType":"ONBUTTONCHOICE", "stringVar":"TestStep" },
+			"comment":"",
+			"secondsBeforeRetriggering":0,
+			"conditions":
+			[
+			],
+			"actionsUponSuccess":
+			[
+				{"actionType":"CHANGEAREA", "areaFileName":"AreaTestStep.json"}
+			],
+			"actionsUponFailure":
+			[
+			]
+		},
+		"EventChoseGPS":
+		{
+			"eventTrigger":{"triggerType":"ONBUTTONCHOICE", "stringVar":"TestGPS" },
+			"comment":"",
+			"secondsBeforeRetriggering":0,
+			"conditions":
+			[
+			],
+			"actionsUponSuccess":
+			[
+				{"actionType":"CHANGEAREA", "areaFileName":"AreaTestGPS.json"}
+			],
+			"actionsUponFailure":
+			[
+			]
+		},
+		"EventChoseAudio":
+		{
+			"eventTrigger":{"triggerType":"ONBUTTONCHOICE", "stringVar":"TestAudio" },
+			"comment":"",
+			"secondsBeforeRetriggering":0,
+			"conditions":
+			[
+			],
+			"actionsUponSuccess":
+			[
+				{"actionType":"CHANGEAREA", "areaFileName":"AreaTestAudio.json"}
+			],
+			"actionsUponFailure":
+			[
+			]
+		},
+		"EventChoseLED":
+		{
+			"eventTrigger":{"triggerType":"ONBUTTONCHOICE", "stringVar":"TestLED" },
+			"comment":"",
+			"secondsBeforeRetriggering":0,
+			"conditions":
+			[
+			],
+			"actionsUponSuccess":
+			[
+				{"actionType":"CHANGEAREA", "areaFileName":"AreaTestLED.json"}
+			],
+			"actionsUponFailure":
+			[
+			]
+		},
+		"EventChoseFlow":
+		{
+			"eventTrigger":{"triggerType":"ONBUTTONCHOICE", "stringVar":"TestFlow" },
+			"comment":"",
+			"secondsBeforeRetriggering":0,
+			"conditions":
+			[
+			],
+			"actionsUponSuccess":
+			[
+				{"actionType":"CHANGEAREA", "areaFileName":"AreaTestFlow.json"}
+			],
+			"actionsUponFailure":
+			[
+			]
+		}
+	}
+}

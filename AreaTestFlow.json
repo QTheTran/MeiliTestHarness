@@ -1,0 +1,305 @@
+{
+	"MeiliVariables":
+	{
+		"AmbientSound":{"varType":"SOUND", "audioChannel":"Music", "loop": true, "fileURI":"MashupMoonlightHotel.mp3", "comment":""},
+		"ResetTimeButton": {"varType":"STRING", "startingValue":"Reset Area Time", "comment":""},
+		"Set5Button": {"varType":"STRING", "startingValue":"Set Time to 5 Seconds", "comment":""},
+		"Set10Button": {"varType":"STRING", "startingValue":"Set Time to 10 Seconds", "comment":""},
+		"Set15Button": {"varType":"STRING", "startingValue":"Set Time to 15 Seconds", "comment":""},
+		"Set20Button": {"varType":"STRING", "startingValue":"Set Time to 20 Seconds", "comment":""},
+		"Set25Button": {"varType":"STRING", "startingValue":"Set Time to 25 Seconds", "comment":""},
+		"Toggle5Button": {"varType":"STRING", "startingValue":"Toggle 5 Second EventListener", "comment":""},
+		"Toggle10Button": {"varType":"STRING", "startingValue":"Toggle 10 Second EventListener", "comment":""},
+		"Toggle15Button": {"varType":"STRING", "startingValue":"Toggle 15 Second EventListener", "comment":""},
+		"Toggle20Button": {"varType":"STRING", "startingValue":"Toggle 20 Second EventListener", "comment":""},
+		"Toggle25Button": {"varType":"STRING", "startingValue":"Toggle 25 Second EventListener", "comment":""}
+	},
+	"MeiliEvents":
+	{
+		"Event0":
+		{
+			"eventTrigger":{"triggerType":"ONAREAENTER"},
+			"comment":"",
+			"maxTriggerCount":-1,
+			"secondsBeforeRetriggering":0,
+			"conditions":[],
+			"actionsUponSuccess":
+			[
+				{"actionType":"PLAYAUDIO", "audioVariable":"AmbientSound"},
+				{"actionType":"SHOWMESSAGE", "message":"Scripting Flow Test"},
+				{"actionType":"ADDBUTTON", "stringVar":"ResetTimeButton"},
+				{"actionType":"ADDBUTTON", "stringVar":"Set5Button"},
+				{"actionType":"ADDBUTTON", "stringVar":"Set10Button"},
+				{"actionType":"ADDBUTTON", "stringVar":"Set15Button"},
+				{"actionType":"ADDBUTTON", "stringVar":"Set20Button"},
+				{"actionType":"ADDBUTTON", "stringVar":"Set25Button"},
+				{"actionType":"ADDBUTTON", "stringVar":"Toggle5Button"},
+				{"actionType":"ADDBUTTON", "stringVar":"Toggle10Button"},
+				{"actionType":"ADDBUTTON", "stringVar":"Toggle15Button"},
+				{"actionType":"ADDBUTTON", "stringVar":"Toggle20Button"},
+				{"actionType":"ADDBUTTON", "stringVar":"Toggle25Button"}
+			],
+			"actionsUponFailure":[]
+		},
+		"EventChoseReset":
+		{
+			"eventTrigger":{"triggerType":"ONBUTTONCHOICE", "stringVar":"ResetTimeButton" },
+			"comment":"",
+			"secondsBeforeRetriggering":0,
+			"conditions":
+			[
+			],
+			"actionsUponSuccess":
+			[
+				{"actionType":"SHOWMESSAGE", "message":"You chose to Reset Time"},
+				{"actionType":"SETAREATIME", "desiredSeconds":0}
+			],
+			"actionsUponFailure":[]
+		},
+		"EventChose5":
+		{
+			"eventTrigger":{"triggerType":"ONBUTTONCHOICE", "stringVar":"Set5Button" },
+			"comment":"",
+			"secondsBeforeRetriggering":0,
+			"conditions":
+			[
+			],
+			"actionsUponSuccess":
+			[
+				{"actionType":"SHOWMESSAGE", "message":"You Set Time to 5 seconds"},
+				{"actionType":"SETAREATIME", "desiredSeconds":5}
+			],
+			"actionsUponFailure":[]
+		},
+		"EventChose10":
+		{
+			"eventTrigger":{"triggerType":"ONBUTTONCHOICE", "stringVar":"Set10Button" },
+			"comment":"",
+			"secondsBeforeRetriggering":0,
+			"conditions":
+			[
+			],
+			"actionsUponSuccess":
+			[
+				{"actionType":"SHOWMESSAGE", "message":"You Set Time to 10 seconds"},
+				{"actionType":"SETAREATIME", "desiredSeconds":10}
+			],
+			"actionsUponFailure":[]
+		},
+		"EventChose15":
+		{
+			"eventTrigger":{"triggerType":"ONBUTTONCHOICE", "stringVar":"Set15Button" },
+			"comment":"",
+			"secondsBeforeRetriggering":0,
+			"conditions":
+			[
+			],
+			"actionsUponSuccess":
+			[
+				{"actionType":"SHOWMESSAGE", "message":"You Set Time to 15 seconds"},
+				{"actionType":"SETAREATIME", "desiredSeconds":15}
+			],
+			"actionsUponFailure":[]
+		},
+		"EventChose20":
+		{
+			"eventTrigger":{"triggerType":"ONBUTTONCHOICE", "stringVar":"Set20Button" },
+			"comment":"",
+			"secondsBeforeRetriggering":0,
+			"conditions":
+			[
+			],
+			"actionsUponSuccess":
+			[
+				{"actionType":"SHOWMESSAGE", "message":"You Set Time to 20 seconds"},
+				{"actionType":"SETAREATIME", "desiredSeconds":20}
+			],
+			"actionsUponFailure":[]
+		},
+		"EventChose25":
+		{
+			"eventTrigger":{"triggerType":"ONBUTTONCHOICE", "stringVar":"Set25Button" },
+			"comment":"",
+			"secondsBeforeRetriggering":0,
+			"conditions":
+			[
+			],
+			"actionsUponSuccess":
+			[
+				{"actionType":"SHOWMESSAGE", "message":"You Set Time to 25 seconds"},
+				{"actionType":"SETAREATIME", "desiredSeconds":25}
+			],
+			"actionsUponFailure":[]
+		},
+		"EventOn5":
+		{
+			"eventTrigger":{"triggerType":"ONTIME","seconds":5},
+			"comment":"",
+			"secondsBeforeRetriggering":0,
+			"conditions":
+			[
+			],
+			"actionsUponSuccess":
+			[
+				{"actionType":"SHOWMESSAGE", "message":"Five Seconds have passed"}
+			],
+			"actionsUponFailure":[]
+		},
+		"EventOn10":
+		{
+			"eventTrigger":{"triggerType":"ONTIME","seconds":10},
+			"comment":"",
+			"secondsBeforeRetriggering":0,
+			"conditions":
+			[
+			],
+			"actionsUponSuccess":
+			[
+				{"actionType":"SHOWMESSAGE", "message":"Ten Seconds have passed"}
+			],
+			"actionsUponFailure":[]
+		},
+		"EventOn15":
+		{
+			"eventTrigger":{"triggerType":"ONTIME","seconds":15},
+			"comment":"",
+			"secondsBeforeRetriggering":0,
+			"conditions":
+			[
+			],
+			"actionsUponSuccess":
+			[
+				{"actionType":"SHOWMESSAGE", "message":"Fifteen Seconds have passed"}
+			],
+			"actionsUponFailure":[]
+		},
+		"EventOn20":
+		{
+			"eventTrigger":{"triggerType":"ONTIME","seconds":20},
+			"comment":"",
+			"secondsBeforeRetriggering":0,
+			"conditions":
+			[
+			],
+			"actionsUponSuccess":
+			[
+				{"actionType":"SHOWMESSAGE", "message":"Twenty Seconds have passed"}
+			],
+			"actionsUponFailure":[]
+		},
+		"EventOn25":
+		{
+			"eventTrigger":{"triggerType":"ONTIME","seconds":25},
+			"comment":"",
+			"secondsBeforeRetriggering":0,
+			"conditions":
+			[
+			],
+			"actionsUponSuccess":
+			[
+				{"actionType":"SHOWMESSAGE", "message":"Twenty-Five Seconds have passed.<br/>No more seconds to report."}
+			],
+			"actionsUponFailure":[]
+		},
+		"EventToggle5":
+		{
+			"eventTrigger":{"triggerType":"ONBUTTONCHOICE", "stringVar":"Toggle5Button" },
+			"comment":"",
+			"secondsBeforeRetriggering":0,
+			"conditions":
+			[
+				{"conditionType":"ISLISTENERON", "listenerName":"EventOn5"}
+			],
+			"actionsUponSuccess":
+			[
+				{"actionType":"SETLISTENEROFF", "listenerName":"EventOn5"},
+				{"actionType":"SHOWMESSAGE", "message":"EventOn5 is now OFF"}
+			],
+			"actionsUponFailure":
+			[
+				{"actionType":"SETLISTENERON", "listenerName":"EventOn5"},
+				{"actionType":"SHOWMESSAGE", "message":"EventOn5 is now ON"}
+			]
+		},
+		"EventToggle10":
+		{
+			"eventTrigger":{"triggerType":"ONBUTTONCHOICE", "stringVar":"Toggle10Button" },
+			"comment":"",
+			"secondsBeforeRetriggering":0,
+			"conditions":
+			[
+				{"conditionType":"ISLISTENERON", "listenerName":"EventOn10"}
+			],
+			"actionsUponSuccess":
+			[
+				{"actionType":"SETLISTENEROFF", "listenerName":"EventOn10"},
+				{"actionType":"SHOWMESSAGE", "message":"EventOn10 is now OFF"}
+			],
+			"actionsUponFailure":
+			[
+				{"actionType":"SETLISTENERON", "listenerName":"EventOn10"},
+				{"actionType":"SHOWMESSAGE", "message":"EventOn10 is now ON"}
+			]
+		},
+		"EventToggle15":
+		{
+			"eventTrigger":{"triggerType":"ONBUTTONCHOICE", "stringVar":"Toggle15Button" },
+			"comment":"",
+			"secondsBeforeRetriggering":0,
+			"conditions":
+			[
+				{"conditionType":"ISLISTENERON", "listenerName":"EventOn15"}
+			],
+			"actionsUponSuccess":
+			[
+				{"actionType":"SETLISTENEROFF", "listenerName":"EventOn15"},
+				{"actionType":"SHOWMESSAGE", "message":"EventOn15 is now OFF"}
+			],
+			"actionsUponFailure":
+			[
+				{"actionType":"SETLISTENERON", "listenerName":"EventOn15"},
+				{"actionType":"SHOWMESSAGE", "message":"EventOn15 is now ON"}
+			]
+		},
+		"EventToggle20":
+		{
+			"eventTrigger":{"triggerType":"ONBUTTONCHOICE", "stringVar":"Toggle20Button" },
+			"comment":"",
+			"secondsBeforeRetriggering":0,
+			"conditions":
+			[
+				{"conditionType":"ISLISTENERON", "listenerName":"EventOn20"}
+			],
+			"actionsUponSuccess":
+			[
+				{"actionType":"SETLISTENEROFF", "listenerName":"EventOn20"},
+				{"actionType":"SHOWMESSAGE", "message":"EventOn20 is now OFF"}
+			],
+			"actionsUponFailure":
+			[
+				{"actionType":"SETLISTENERON", "listenerName":"EventOn20"},
+				{"actionType":"SHOWMESSAGE", "message":"EventOn20 is now ON"}
+			]
+		},
+		"EventToggle25":
+		{
+			"eventTrigger":{"triggerType":"ONBUTTONCHOICE", "stringVar":"Toggle25Button" },
+			"comment":"",
+			"secondsBeforeRetriggering":0,
+			"conditions":
+			[
+				{"conditionType":"ISLISTENERON", "listenerName":"EventOn25"}
+			],
+			"actionsUponSuccess":
+			[
+				{"actionType":"SETLISTENEROFF", "listenerName":"EventOn25"},
+				{"actionType":"SHOWMESSAGE", "message":"EventOn25 is now OFF"}
+			],
+			"actionsUponFailure":
+			[
+				{"actionType":"SETLISTENERON", "listenerName":"EventOn25"},
+				{"actionType":"SHOWMESSAGE", "message":"EventOn25 is now ON"}
+			]
+		}
+	}
+}

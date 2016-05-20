@@ -1,0 +1,101 @@
+{
+	"MeiliVariables":
+	{
+		"AmbientSound":{"varType":"SOUND", "audioChannel":"Music", "loop": true, "fileURI":"MashupDayTheMusicDied.mp3", "comment":""},
+		"ShakeFail0": {"varType":"SOUND", "audioChannel":"Voice", "fileURI":"ShakeFail0.wav", "comment":""},
+		"ShakeFail1": {"varType":"SOUND", "audioChannel":"Voice", "fileURI":"ShakeFail1.wav", "comment":""},
+		"ShakeFail2": {"varType":"SOUND", "audioChannel":"Voice", "fileURI":"ShakeFail2.wav", "comment":""},
+		"StillAffirmation0": {"varType":"SOUND", "audioChannel":"Voice", "fileURI":"StillAffirmation0.wav", "comment":""},
+		"StillAffirmation1": {"varType":"SOUND", "audioChannel":"Voice", "fileURI":"StillAffirmation1.wav", "comment":""},
+		"StillAffirmation2": {"varType":"SOUND", "audioChannel":"Voice", "fileURI":"StillAffirmation2.wav", "comment":""},
+		"RandomSoundButton": {"varType":"STRING", "startingValue":"Play Random Sound", "comment":""},
+		"PlayRandomSound":
+		{
+			"varType":"MACRO",
+			"actionArray":
+			[
+				{
+					"actionType":"SELECT",
+					"evaluationType":"RANDOM",
+					"caseArray":
+					[
+						{
+							"conditionArray":[],
+							"actionArray":
+							[
+								{"actionType":"PLAYAUDIO", "audioVariable":"ShakeFail0"}
+							]
+						},
+						{
+							"conditionArray":[],
+							"actionArray":
+							[
+								{"actionType":"PLAYAUDIO", "audioVariable":"ShakeFail1"}
+							]
+						},
+						{
+							"conditionArray":[],
+							"actionArray":
+							[
+								{"actionType":"PLAYAUDIO", "audioVariable":"ShakeFail2"}
+							]
+						},
+						{
+							"conditionArray":[],
+							"actionArray":
+							[
+								{"actionType":"PLAYAUDIO", "audioVariable":"StillAffirmation0"}
+							]
+						},
+						{
+							"conditionArray":[],
+							"actionArray":
+							[
+								{"actionType":"PLAYAUDIO", "audioVariable":"StillAffirmation1"}
+							]
+						},
+						{
+							"conditionArray":[],
+							"actionArray":
+							[
+								{"actionType":"PLAYAUDIO", "audioVariable":"StillAffirmation2"}
+							]
+						}
+					]
+				}
+			]
+		}
+	},
+	"MeiliEvents":
+	{
+		"Event0":
+		{
+			"eventTrigger":{"triggerType":"ONAREAENTER"},
+			"comment":"",
+			"maxTriggerCount":-1,
+			"secondsBeforeRetriggering":0,
+			"conditions":[],
+			"actionsUponSuccess":
+			[
+				{"actionType":"PLAYAUDIO", "audioVariable":"AmbientSound"},
+				{"actionType":"SHOWMESSAGE", "message":"Audio Functionality Test"},
+				{"actionType":"ADDBUTTON", "stringVar":"RandomSoundButton"}
+			],
+			"actionsUponFailure":[]
+		},
+		"EventChoseRandomSound":
+		{
+			"eventTrigger":{"triggerType":"ONBUTTONCHOICE", "stringVar":"RandomSoundButton" },
+			"comment":"",
+			"secondsBeforeRetriggering":0,
+			"conditions":
+			[
+			],
+			"actionsUponSuccess":
+			[
+				{"actionType":"DOMACRO", "macroVar":"PlayRandomSound"}
+			],
+			"actionsUponFailure":[]
+		}
+	}
+}

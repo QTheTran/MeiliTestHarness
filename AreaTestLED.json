@@ -1,0 +1,72 @@
+{
+	"MeiliVariables":
+	{
+		"LEDON": {"varType":"STRING", "startingValue":"ON", "comment":""},
+		"LEDOFF": {"varType":"STRING", "startingValue":"OFF", "comment":""},
+		"LEDFLASH": {"varType":"STRING", "startingValue":"Flash for 1 second", "comment":""}
+	},
+	"MeiliEvents":
+	{
+		"Event0":
+		{
+			"eventTrigger":{"triggerType":"ONAREAENTER"},
+			"comment":"",
+			"maxTriggerCount":-1,
+			"secondsBeforeRetriggering":0,
+			"conditions":[],
+			"actionsUponSuccess":
+			[
+				{"actionType":"SHOWMESSAGE", "message":"LED Functionality Test"},
+				{"actionType":"ADDBUTTON", "stringVar":"LEDON"},
+				{"actionType":"ADDBUTTON", "stringVar":"LEDOFF"},
+				{"actionType":"ADDBUTTON", "stringVar":"LEDFLASH"}
+			],
+			"actionsUponFailure":[]
+		},
+		"EventChoseOn":
+		{
+			"eventTrigger":{"triggerType":"ONBUTTONCHOICE", "stringVar":"LEDON" },
+			"comment":"",
+			"secondsBeforeRetriggering":0,
+			"conditions":
+			[
+			],
+			"actionsUponSuccess":
+			[
+				{"actionType":"TURNONLED"},
+				{"actionType":"SHOWMESSAGE", "message":"LED On"}
+			],
+			"actionsUponFailure":[]
+		},
+		"EventChoseOff":
+		{
+			"eventTrigger":{"triggerType":"ONBUTTONCHOICE", "stringVar":"LEDOFF" },
+			"comment":"",
+			"secondsBeforeRetriggering":0,
+			"conditions":
+			[
+			],
+			"actionsUponSuccess":
+			[
+				{"actionType":"TURNOFFLED"},
+				{"actionType":"SHOWMESSAGE", "message":"LED Off"}
+			],
+			"actionsUponFailure":[]
+		},
+		"EventChoseFlash":
+		{
+			"eventTrigger":{"triggerType":"ONBUTTONCHOICE", "stringVar":"LEDFLASH" },
+			"comment":"",
+			"secondsBeforeRetriggering":0,
+			"conditions":
+			[
+			],
+			"actionsUponSuccess":
+			[
+				{"actionType":"FLASHLED", "seconds":1},
+				{"actionType":"SHOWMESSAGE", "message":"LED Flash"}
+			],
+			"actionsUponFailure":[]
+		}
+	}
+}

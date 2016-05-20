@@ -1,0 +1,36 @@
+{
+	"MeiliVariables":
+	{
+		"AmbientSound":{"varType":"SOUND", "audioChannel":"Music", "loop": true, "fileURI":"MashupMyWay.mp3", "comment":""},
+		"StepKeeper": {"varType":"STEPACCUMULATOR", "startingValue":0, "stepsLostPerSecond": 0, "comment":""}
+	},
+	"MeiliEvents":
+	{
+		"Event0":
+		{
+			"eventTrigger":{"triggerType":"ONAREAENTER"},
+			"comment":"",
+			"maxTriggerCount":-1,
+			"secondsBeforeRetriggering":0,
+			"conditions":[],
+			"actionsUponSuccess":
+			[
+				{"actionType":"PLAYAUDIO", "audioVariable":"AmbientSound"},
+				{"actionType":"SHOWMESSAGE", "message":"Step Detection Test"}
+			],
+			"actionsUponFailure":[]
+		},
+		"IntervalEvent":
+        {
+            "eventTrigger": {"triggerType": "ONINTERVAL"},
+            "comment": "",
+            "secondsBeforeRetriggering": 0,
+            "conditions":[],
+            "actionsUponSuccess":
+			[
+				{"actionType":"SHOWVAR", "varName":"StepKeeper", "prefix":"Steps: ", "suffix":"" }
+            ],
+            "actionsUponFailure": []
+        }
+	}
+}

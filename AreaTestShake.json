@@ -1,0 +1,57 @@
+{
+	"MeiliVariables":
+	{
+		"AmbientSound":{"varType":"SOUND", "audioChannel":"Music", "loop": true, "fileURI":"MashupRockOfAges.mp3", "comment":""},
+		"ShakeKeeper": {"varType":"SHAKEACCUMULATOR", "startingValue":0, "maxValue": 100, "shakeLostPerSecond": 10, "comment":""}
+	},
+	"MeiliEvents":
+	{
+		"Event0":
+		{
+			"eventTrigger":{"triggerType":"ONAREAENTER"},
+			"comment":"",
+			"maxTriggerCount":-1,
+			"secondsBeforeRetriggering":0,
+			"conditions":[],
+			"actionsUponSuccess":
+			[
+				{"actionType":"PLAYAUDIO", "audioVariable":"AmbientSound"},
+				{"actionType":"SHOWMESSAGE", "message":"Shake Detection Test"}
+			],
+			"actionsUponFailure":[]
+		},
+		"IntervalEvent":
+        {"eventTrigger": {"triggerType": "ONINTERVAL"},
+            "comment": "",
+            "secondsBeforeRetriggering": 0,
+            "conditions":[],
+            "actionsUponSuccess":
+			[
+				{"actionType":"SHOWVAR", "varName":"ShakeKeeper", "prefix":"", "suffix":" shake units"}
+            ],
+            "actionsUponFailure": []
+        },
+		"LittleShakeEvent":
+		{"eventTrigger": {"triggerType":"ONSHAKE","magnitudeMin":25.0,"magnitudeMax":50.0},
+            "comment": "",
+            "secondsBeforeRetriggering": 1,
+            "conditions":[],
+            "actionsUponSuccess":
+			[
+				{"actionType":"SHOWMESSAGE", "message":"Little Shake Detected"}
+            ],
+            "actionsUponFailure": []
+        },
+		"BigShakeEvent":
+		{"eventTrigger": {"triggerType":"ONSHAKE","magnitudeMin":50.1,"magnitudeMax":1000.0},
+            "comment": "",
+            "secondsBeforeRetriggering": 1,
+            "conditions":[],
+            "actionsUponSuccess":
+			[
+				{"actionType":"SHOWMESSAGE", "message":"Big Shake Detected"}
+            ],
+            "actionsUponFailure": []
+        }
+	}
+}

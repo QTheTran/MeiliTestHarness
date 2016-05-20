@@ -1,0 +1,55 @@
+{
+	"MeiliVariables":
+	{
+		"BackButton": {"varType":"STRING", "startingValue":"Back to Test Selection", "comment":""}
+	},
+	"MeiliEvents":
+	{
+		"EventStartGame":
+		{
+			"eventTrigger":{"triggerType":"ONAREAENTER"},
+			"comment":"",
+			"maxTriggerCount":-1,
+			"secondsBeforeRetriggering":0,
+			"conditions":[],
+			"actionsUponSuccess":
+			[
+				{"actionType":"CHANGEAREA", "areaFileName":"AreaTestHub.json"}
+			],
+			"actionsUponFailure":[]
+		},
+		"EventChoseBack":
+		{
+			"eventTrigger":{"triggerType":"ONBUTTONCHOICE", "stringVar":"BackButton" },
+			"comment":"",
+			"secondsBeforeRetriggering":0,
+			"conditions":
+			[
+			],
+			"actionsUponSuccess":
+			[
+				{"actionType":"REMOVEALLBUTTONS"},
+				{"actionType":"CHANGEAREA", "areaFileName":"AreaTestHub.json"}
+			],
+			"actionsUponFailure":
+			[
+			]
+		},
+		"EventHubAreaExited":
+		{
+			"eventTrigger":{"triggerType":"ONCUSTOMTRIGGER"},
+			"comment":"Putting this custom trigger in a Global area instead of a Local area causes the button to show up as a global button",
+			"secondsBeforeRetriggering":0,
+			"conditions":
+			[
+			],
+			"actionsUponSuccess":
+			[
+				{"actionType":"ADDBUTTON", "stringVar":"BackButton"}
+			],
+			"actionsUponFailure":
+			[
+			]
+		}
+	}
+}

@@ -1,0 +1,118 @@
+{
+	"MeiliVariables":
+	{
+		"BackgroundSound":{"varType":"SOUND", "audioChannel":"Music", "loop": true, "fileURI":"ZeldaHyrulianReMix.mp3", "comment":""},
+		"HideButtonsTest": {"varType":"STRING", "startingValue":"Hide Buttons for 3 seconds", "comment":""},
+		"HideInterfaceTest": {"varType":"STRING", "startingValue":"Hide Interface for 3 seconds", "comment":""},
+		"ShowImageTest": {"varType":"STRING", "startingValue":"Show Image", "comment":""},
+		"HideImageTest": {"varType":"STRING", "startingValue":"Hide Image", "comment":""}
+	},
+	"MeiliEvents":
+	{
+		"Event0":
+		{
+			"eventTrigger":{"triggerType":"ONAREAENTER"},
+			"comment":"",
+			"maxTriggerCount":-1,
+			"secondsBeforeRetriggering":0,
+			"conditions":[],
+			"actionsUponSuccess":
+			[
+				{"actionType":"PLAYAUDIO", "audioVariable":"BackgroundSound"},
+				{"actionType":"SHOWMESSAGE", "message":"UI Test"},
+				{"actionType":"ADDBUTTON", "stringVar":"HideButtonsTest"},
+				{"actionType":"ADDBUTTON", "stringVar":"HideInterfaceTest"},
+				{"actionType":"ADDBUTTON", "stringVar":"ShowImageTest"},
+				{"actionType":"ADDBUTTON", "stringVar":"HideImageTest"}
+			],
+			"actionsUponFailure":[]
+		},
+		"EventChoseHideButtons":
+		{
+			"eventTrigger":{"triggerType":"ONBUTTONCHOICE", "stringVar":"HideButtonsTest" },
+			"comment":"",
+			"secondsBeforeRetriggering":0,
+			"conditions":
+			[
+			],
+			"actionsUponSuccess":
+			[
+				{"actionType":"HIDEBUTTONS"},
+				{"actionType":"SHOWMESSAGE", "message":"3..."},
+				{"actionType":"WAIT", "seconds":1},
+				{"actionType":"SHOWMESSAGE", "message":"2..."},
+				{"actionType":"WAIT", "seconds":1},
+				{"actionType":"SHOWMESSAGE", "message":"1..."},
+				{"actionType":"WAIT", "seconds":1},
+				{"actionType":"SHOWMESSAGE", "message":"Tada!"},
+				{"actionType":"SHOWBUTTONS"}
+			],
+			"actionsUponFailure":
+			[
+			]
+		},
+		"EventChoseHideInterface":
+		{
+			"eventTrigger":{"triggerType":"ONBUTTONCHOICE", "stringVar":"HideInterfaceTest" },
+			"comment":"",
+			"secondsBeforeRetriggering":0,
+			"conditions":
+			[
+			],
+			"actionsUponSuccess":
+			[
+				{"actionType":"HIDEINTERFACE"},
+				{"actionType":"WAIT", "seconds":3},
+				{"actionType":"SHOWINTERFACE"}
+			],
+			"actionsUponFailure":
+			[
+			]
+		},
+		"EventChoseShowImage":
+		{
+			"eventTrigger":{"triggerType":"ONBUTTONCHOICE", "stringVar":"ShowImageTest" },
+			"comment":"",
+			"secondsBeforeRetriggering":0,
+			"conditions":
+			[
+			],
+			"actionsUponSuccess":
+			[				
+				{
+					"actionType":"SELECT",
+					"evaluationType":"RANDOM",
+					"caseArray":
+					[
+						{
+							"conditionArray":[],
+							"actionArray":
+							[
+								{"actionType":"SHOWIMAGE", "url":"http://www.critterbabies.com/wp-content/uploads/2015/11/kittens-box-golden-tabby-white.jpg"}
+							]
+						}
+					]
+				}
+			],
+			"actionsUponFailure":
+			[
+			]
+		},
+		"EventChoseHideImage":
+		{
+			"eventTrigger":{"triggerType":"ONBUTTONCHOICE", "stringVar":"HideImageTest" },
+			"comment":"",
+			"secondsBeforeRetriggering":0,
+			"conditions":
+			[
+			],
+			"actionsUponSuccess":
+			[
+				{"actionType":"HIDEIMAGE"}
+			],
+			"actionsUponFailure":
+			[
+			]
+		}
+	}
+}

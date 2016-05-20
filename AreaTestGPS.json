@@ -1,0 +1,107 @@
+{
+	"MeiliVariables":
+	{
+		"AmbientSound":{"varType":"SOUND", "audioChannel":"Music", "loop": true, "fileURI":"MashupRockHarmony.mp3", "comment":""},
+		"DistanceKeeper": {"varType":"DISTANCEACCUMULATOR", "startingValue":0, "stepsLostPerSecond": 0, "comment":""},
+		"DistanceFromMarkedLocation": {"varType":"DISTANCEFROM", "locationVar":"MarkedLocation", "comment":""},
+		"IsLocationMarked": {"varType":"NUMBER", "startingValue":0, "comment":""},
+		"MarkLocationButton": {"varType":"STRING", "startingValue":"Mark Current Location", "comment":""},
+		"MarkedLocation":
+		{
+			"varType":"LOCATION",
+			"latitude": 0,
+			"longitude": 0,
+			"horizontalEntryRadius":0,
+			"horizontalExitRadius":0,
+			"altitude": 0,
+			"verticalEntryRadius":0,
+			"verticalExitRadius":0,
+			"comment":"This location will get overwritten when MARKLOCATION is used"
+		}
+	},
+	"MeiliEvents":
+	{
+		"Event0":
+		{
+			"eventTrigger":{"triggerType":"ONAREAENTER"},
+			"comment":"",
+			"maxTriggerCount":-1,
+			"secondsBeforeRetriggering":0,
+			"conditions":[],
+			"actionsUponSuccess":
+			[
+				{"actionType":"PLAYAUDIO", "audioVariable":"AmbientSound"},
+				{"actionType":"SHOWMESSAGE", "message":"GPS Functionality Test"},
+				{"actionType":"ADDBUTTON", "stringVar":"MarkLocationButton"},
+				{"actionType": "STARTGEOLOCATION" }
+			],
+			"actionsUponFailure":[]
+		},
+		"EventChoseMarkLocation":
+		{
+			"eventTrigger":{"triggerType":"ONBUTTONCHOICE", "stringVar":"MarkLocationButton" },
+			"comment":"",
+			"secondsBeforeRetriggering":0,
+			"conditions":
+			[
+			],
+			"actionsUponSuccess":
+			[
+				{"actionType":"CHANGEBYVALUE", "leftVar":"IsLocationMarked", "changeOperator":"=", "rightVal":1},
+				{"actionType":"MARKLOCATION",
+					"locationVar":"MarkedLocation",
+					"horizontalEntryRadius":10,
+					"horizontalExitRadius":20
+				},
+				{"actionType":"SHOWMESSAGE", "message":"Current location marked"}
+			],
+			"actionsUponFailure":[]
+		},
+		"EventEnterMarkLocation":
+		{
+			"eventTrigger":{"triggerType":"ONLOCATIONENTERED","locationVar":"MarkedLocation"},
+			"comment":"",
+			"secondsBeforeRetriggering":0,
+			"conditions":
+			[
+			],
+			"actionsUponSuccess":
+			[
+				{"actionType":"SHOWMESSAGE", "message":"MarkedLocation Entered"}
+			],
+			"actionsUponFailure":[]
+		},
+		"EventExitMarkLocation":
+		{
+			"eventTrigger":{"triggerType":"ONLOCATIONEXITED","locationVar":"MarkedLocation"},
+			"comment":"",
+			"secondsBeforeRetriggering":0,
+			"conditions":
+			[
+			],
+			"actionsUponSuccess":
+			[
+				{"actionType":"SHOWMESSAGE", "message":"MarkedLocation Exited"}
+			],
+			"actionsUponFailure":[]
+		},
+		"IntervalEvent":
+		{
+			"eventTrigger": {"triggerType": "ONGPSSUCCESS"},
+            "comment": "",
+            "secondsBeforeRetriggering": 0,
+            "conditions":
+			[
+				{"conditionType":"COMPAREVALUE", "leftVar":"IsLocationMarked", "compareOperator":"==", "rightVal":1}
+			],
+            "actionsUponSuccess":
+			[
+				{"actionType":"SHOWVAR", "varName":"DistanceFromMarkedLocation", "prefix":"", "suffix":" meters from MarkedLocation"}
+            ],
+            "actionsUponFailure":
+			[
+				{"actionType":"SHOWVAR", "varName":"DistanceKeeper", "prefix":"", "suffix":" meters"}
+			]
+        }
+	}
+}
