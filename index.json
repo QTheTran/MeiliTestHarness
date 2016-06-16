@@ -2,6 +2,7 @@
 	"GameIconURL":"./img/cub.gif",
 	"GameTitle":"Test Harness",
 	"GameDescription":"In Soviet Russia,<br/>HARNESS TEST YOU!",
+	"GitHubAuthor":"QTheTran",
 	"GlobalAreaFile":"AreaTestGlobal.json",
 	"AudioChannelDefinitions":
 	{
